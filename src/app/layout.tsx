@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '@/app/globals.scss';
+import { ClerkProvider } from '@clerk/nextjs';
+import Header from '@/components/layout/Header/Header';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,8 +18,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={inter.className}>
+          <div className={`flex min-h-[100dvh] w-full flex-col`}>
+            <Header />
+            <div className={`flex-1 flex-col`}>
+              <div className={`bg-slate-200 p-4`}>
+                <ScrollArea className="bg-mint-cream h-[calc(100dvh-4rem)] w-full rounded p-4 shadow-xl">
+                  {children}
+                </ScrollArea>
+              </div>
+            </div>
+          </div>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
