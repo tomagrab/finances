@@ -9,6 +9,7 @@ export default function Header() {
         h-16
         w-full
         items-center
+        px-4
       `}
     >
       <div
@@ -64,19 +65,26 @@ export default function Header() {
           justify-end
         `}
       >
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
-        <SignedOut>
-          <SignInButton>
-            <Button
-              className={`
+        <div
+          className={`
+            hidden
+            md:flex
+            `}
+        >
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          <SignedOut>
+            <SignInButton>
+              <Button
+                className={`
               `}
-            >
-              Sign in
-            </Button>
-          </SignInButton>
-        </SignedOut>
+              >
+                Sign in
+              </Button>
+            </SignInButton>
+          </SignedOut>
+        </div>
       </div>
     </header>
   );
