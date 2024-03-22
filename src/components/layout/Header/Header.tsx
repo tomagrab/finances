@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import { LogIn } from 'lucide-react';
 
 export default function Header() {
   return (
@@ -43,7 +44,7 @@ export default function Header() {
             md:block
           `}
         >
-          Velocitor Solutions QR Code Manager
+          Finances
         </h1>
         <h1
           className={`
@@ -55,7 +56,7 @@ export default function Header() {
             md:hidden
           `}
         >
-          QR Code Manager
+          Finances
         </h1>
       </div>
       <div
@@ -76,12 +77,7 @@ export default function Header() {
           </SignedIn>
           <SignedOut>
             <SignInButton>
-              <Button
-                className={`
-              `}
-              >
-                Sign in
-              </Button>
+              <LogIn />
             </SignInButton>
           </SignedOut>
         </div>

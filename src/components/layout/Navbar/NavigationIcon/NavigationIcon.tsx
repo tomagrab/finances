@@ -1,22 +1,14 @@
 'use client';
-import {
-  HelpCircle,
-  Home,
-  NotebookPen,
-  LogIn,
-  LogOut,
-  MessageSquareText,
-} from 'lucide-react';
+import { Home, LogIn, LogOut, Landmark, LineChart } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const IconMap = {
   home: Home,
-  blog: MessageSquareText,
-  about: HelpCircle,
-  projects: NotebookPen,
   login: LogIn,
   logout: LogOut,
+  finances: Landmark,
+  analytics: LineChart,
 };
 
 type NavigationIconProps = {
@@ -37,21 +29,47 @@ export default function NavigationIcon({
       href={href}
       className={`group relative h-16 w-full md:w-20 ${
         pathname === href || (pathname.includes(href) && href.length !== 1)
-          ? 'text-celestial-blue'
+          ? 'text-blue-500'
           : headerIcon
-            ? 'text-mint-cream'
+            ? 'text-white'
             : 'text-slate-900'
       }`}
     >
       {IconComponent ? (
         <IconComponent
-          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform transition-opacity duration-300 ease-in-out group-hover:opacity-0`}
+          className={`
+            absolute
+            left-1/2
+            top-1/2
+            -translate-x-1/2
+            -translate-y-1/2
+            transform
+            transition-opacity
+            duration-300
+            ease-in-out
+            group-hover:opacity-0
+          `}
         />
       ) : (
         '?'
       )}
       <div
-        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform select-none text-sm capitalize opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100`}
+        className={`
+          absolute
+          left-1/2
+          top-1/2
+          -translate-x-1/2
+          -translate-y-1/2
+          transform
+          select-none
+          text-sm
+          capitalize
+          opacity-0
+          transition-opacity
+          duration-300
+          ease-in-out
+          group-hover:opacity-100
+        `}
       >
         {iconName}
       </div>

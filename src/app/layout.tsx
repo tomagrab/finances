@@ -29,10 +29,10 @@ export default function RootLayout({
               <div className={`bg-slate-200 p-4`}>
                 <ScrollArea
                   className={`
-                    bg-mint-cream
                     h-[calc(100dvh-10rem)]
                     w-full
                     rounded
+                    bg-white
                     p-4
                     shadow-xl
                     md:h-[calc(100dvh-6rem)]

@@ -12,3 +12,37 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+// Models for a personal finance app
+model User {
+  id       String   @id @default(cuid())
+  email    String   @unique
+  name     String?
+  accounts Account[]
+}
+
+model Account {
+  id     String @id @default(cuid())
+  name   String
+  type   AccountType
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+  transactions Transaction[]
+}
+
+enum AccountType {
+  CHECKING
+  SAVINGS
+  CREDIT_CARD
+  INVESTMENT
+}
+
+model Transaction {
+  id          String    @id @default(cuid())
+  amount      Float
+  date        DateTime
+  description String
+  accountId   String
+  account     Account   @relation(fields: [accountId], references: [id])
+}
+

@@ -1,12 +1,12 @@
 import NavigationIcon from '@/components/layout/Navbar/NavigationIcon/NavigationIcon';
-import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
+import { LogIn } from 'lucide-react';
 
 export default function Navbar() {
   return (
     <aside
       className={`
         navbar
-        bg-mint-cream
         absolute
         bottom-0
         left-0
@@ -54,10 +54,9 @@ export default function Navbar() {
           md:items-center
         `}
       >
-        <NavigationIcon iconName="home" href="/" />
-        <NavigationIcon iconName="blog" href="/Blog" />
-        <NavigationIcon iconName="about" href="/About" />
-        <NavigationIcon iconName="projects" href="/Projects" />
+        <NavigationIcon iconName={`home`} href={`/`} />
+        <NavigationIcon iconName={`finances`} href={`/Finances`} />
+        <NavigationIcon iconName={`analytics`} href={`/Analytics`} />
       </div>
       <div
         className={`
@@ -68,8 +67,9 @@ export default function Navbar() {
           md:hidden
         `}
       >
-        <NavigationIcon iconName="home" href="/" />
-        <NavigationIcon iconName="blog" href="/Blog" />
+        <NavigationIcon iconName={`home`} href={`/`} />
+        <NavigationIcon iconName={`finances`} href={`/Finances`} />
+        <NavigationIcon iconName={`analytics`} href={`/Analytics`} />
         <div
           className={`
             flex
@@ -83,14 +83,11 @@ export default function Navbar() {
             <UserButton />
           </SignedIn>
           <SignedOut>
-            <NavigationIcon
-              iconName="login"
-              href="https://accounts.tommygrabowski.com/sign-in"
-            />
+            <SignInButton>
+              <LogIn />
+            </SignInButton>
           </SignedOut>
         </div>
-        <NavigationIcon iconName="about" href="/About" />
-        <NavigationIcon iconName="projects" href="/Projects" />
       </div>
     </aside>
   );
